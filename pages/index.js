@@ -108,7 +108,8 @@ export default function ResponsiveWhatsUpDashboard() {
       </section>
 
       <section className="min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-screen">
+        <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1>
+        {/* <div className="w-full max-w-screen">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {images.map((imageUrl, idx) => (
               <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
@@ -129,7 +130,7 @@ export default function ResponsiveWhatsUpDashboard() {
               </BlurFade>
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   )
