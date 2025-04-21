@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ShoppingCart } from "lucide-react"
+import Link from "next/link"
 
 const menuItems = [
   {
@@ -8,19 +9,11 @@ const menuItems = [
     href: "/",
   },
   {
-    title: "Shop",
-    href: "/",
+    title: "Services",
+    href: "/services",
   },
   {
     title: "About",
-    href: "/",
-  },
-  {
-    title: "Lookbook",
-    href: "/",
-  },
-  {
-    title: "Contact",
     href: "/",
   },
 ]
@@ -103,8 +96,8 @@ const AdvancedNavbar = () => {
   }
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 ">
+      <div className="container mx-auto px-4 py-6 flex justify-between items-center backdrop-blur-sm rounded-b-3xl">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -119,7 +112,9 @@ const AdvancedNavbar = () => {
             whileTap={{ scale: 0.9 }}
             className="cursor-pointer"
           >
-            <ShoppingCart className="h-6 w-6" />
+            <Link target="_blank" href="https://www.fiverr.com/s/DB774dV">
+              <ShoppingCart className="h-6 w-6" />
+            </Link>
           </motion.div>
           <motion.button
             whileHover={{ scale: 1.1 }}

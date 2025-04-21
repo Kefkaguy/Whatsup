@@ -85,8 +85,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         scroll: "scroll ease 1.5s infinite",
+        "bounce-slow": "bounce 2s infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animated"), require("tailwindcss-gradients")],
 }

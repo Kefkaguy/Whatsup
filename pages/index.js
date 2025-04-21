@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { TextEffect } from "@/components/core/text-effect"
 import ScrollDown from "@/public/svg/ScrollDown"
-import BlurFade from "@/components/magicui/blur-fade"
+
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
 import { motion } from "framer-motion"
 import AdvancedNavbar from "@/components/navbar/Navbar"
@@ -25,25 +25,6 @@ export default function ResponsiveWhatsUpDashboard() {
     }
     return color
   }
-
-  const images = Array.from({ length: 9 }, (_, i) => {
-    const isLandscape = i % 2 === 0
-    const width = isLandscape ? 900 : 700
-    const height = isLandscape ? 600 : 467
-    return `https://picsum.photos/seed/${i + 1}/${width}/${height}`
-  })
-
-  const links = [
-    "/",
-    "/",
-    "/",
-    "/",
-    "/",
-    "/",
-    "/",
-    "/",
-    "/",
-  ]
 
   const fancyVariants = {
     container: {
@@ -79,18 +60,18 @@ export default function ResponsiveWhatsUpDashboard() {
   }
 
   return (
-    <div className="w-full overflow-y-auto overflow-x-hidden">
-      <AdvancedNavbar />
-      <section className="min-h-screen flex flex-col items-center justify-center text-center p-4">
+    <main>
+      <section className=" min-h-screen flex flex-col items-center justify-center text-center p-4 overflow-hidden">
         <TextEffect
           per="char"
           variants={fancyVariants}
-          className="text-[clamp(4rem,15vw,512px)] font-bold tracking-tighter"
+          className="text-[clamp(4rem,15vw,512px)] font-bold tracking-tighter text-white"
         >
           What's up
         </TextEffect>
+
         <motion.div
-          className="mt-16  sm:mt-24 md:mt-32 lg:mt-40 xl:mt-48"
+          className="mt-16 sm:mt-24 md:mt-32 lg:mt-40 xl:mt-48"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
@@ -106,7 +87,6 @@ export default function ResponsiveWhatsUpDashboard() {
           className="font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-9xl md:leading-[5rem]"
         />
       </section>
-
       <section className="min-h-screen flex items-center justify-center p-4">
         <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1>
         {/* <div className="w-full max-w-screen">
@@ -132,6 +112,6 @@ export default function ResponsiveWhatsUpDashboard() {
           </div>
         </div> */}
       </section>
-    </div>
+    </main>
   )
 }
