@@ -1,114 +1,67 @@
 import React from "react"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function services() {
-  const servicesList = [
-    {
-      title: "Web Development",
-      description:
-        "Creating responsive, modern websites and web applications using Next.js and React.",
-      icon: "💻",
-    },
-    {
-      title: "Mobile Development",
-      description:
-        "Building native iOS applications using Swift with clean architecture and intuitive UI/UX.",
-      icon: "📱",
-    },
-    {
-      title: "UI/UX Design",
-      description:
-        "Designing beautiful, user-friendly interfaces that enhance user experience across platforms.",
-      icon: "🎨",
-    },
-    {
-      title: "API Integration",
-      description:
-        "Connecting your applications to third-party services and creating robust backend solutions.",
-      icon: "🔌",
-    },
-    {
-      title: "Code Optimization",
-      description:
-        "Improving performance and efficiency of existing applications through refactoring and optimization.",
-      icon: "⚡",
-    },
-    {
-      title: "Consultation",
-      description:
-        "Technical advice and project planning for your Next.js and Swift development needs.",
-      icon: "💡",
-    },
-  ]
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-    hover: {
-      y: -5,
-      scale: 1.03,
-      boxShadow: "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)",
-      transition: {
-        duration: 0.3,
-      },
-    },
-  }
-
   return (
-    <div className="h-full w-full">
-      <section className="min-h-screen flex flex-col pt-44 items-center p-4 overflow-hidden">
-        <motion.p
-          className="font-jetbrains font-bold text-3xl mb-16"
-          initial={{ opacity: 0, y: -20 }}
-          z
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          Services I offer
-        </motion.p>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl"
-          variants={container}
-          initial="hidden"
-          animate="visible"
-        >
-          {servicesList.map((service, index) => (
-            <motion.div
-              key={index}
-              className="border border-gray-300 rounded-2xl p-6 backdrop-blur-md bg-white/10 shadow-lg"
-              variants={item}
-              whileHover="hover"
-            >
-              <div className="flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-white/15 backdrop-blur-lg">
-                <span className="text-3xl">{service.icon}</span>
+    <div className="h-screen w-full ">
+      <div className="px-6 py-24 md:px-12 md:py-32">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Hero Section */}
+          <div className="mb-16">
+            <div className="flex flex-col">
+              {/* Main Heading */}
+              <div className="mb-8">
+                <h1 className="flex flex-col text-6xl md:text-7xl font-bold">
+                  <span className="bg-black inline-block p-2 mb-2 w-fit">
+                    Unlock Your
+                  </span>
+                  <span className="bg-black inline-block p-2 mb-2 w-fit">
+                    Potential With
+                  </span>
+                  <span className="bg-black inline-block p-2 w-fit">Us</span>
+                </h1>
               </div>
-              <h3 className="font-jetbrains font-bold text-xl mb-4">
-                {service.title}
-              </h3>
-              <p className="font-jetbrains text-sm opacity-85 leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+
+              {/* Our Services */}
+              <div className="mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-300">✦</span>
+                  <span className="text-gray-300">Our Services</span>
+                </div>
+              </div>
+
+              {/* CTA Button with glow effect */}
+              <div className="">
+                <motion.button
+                  className="bg-black text-white border border-white rounded-full px-8 py-3 relative"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(255, 255, 255, 0.5)",
+                  }}
+                  initial={{ boxShadow: "0 0 0 rgba(255, 255, 255, 0)" }}
+                >
+                  <Link target="_blank" href="https://www.fiverr.com/s/DB774dV">
+                    Work with us!
+                  </Link>
+                </motion.button>
+              </div>
+
+              <div className="flex justify-center">
+                <Image src="/Kefka.png" width={300} height={300} />
+              </div>
+
+              {/* Services List */}
+              <div className="flex flex-col gap-4 md:text-right ml-auto text-4xl md:text-5xl text-gray-300">
+                <h2>Website Design</h2>
+                <h2>Development</h2>
+                <h2>SEO + CMS</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
