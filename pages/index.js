@@ -89,28 +89,6 @@ export default function ResponsiveWhatsUpDashboard() {
       </section>
       <section className="min-h-screen flex items-center justify-center p-4">
         <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1>
-        {/* <div className="w-full max-w-screen">
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
-            {images.map((imageUrl, idx) => (
-              <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
-                <div className="mb-4 transform translate-y-4">
-                  <a
-                    href={links[idx]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-                  >
-                    <img
-                      className="w-full h-auto object-cover"
-                      src={imageUrl}
-                      alt={`Random stock image ${idx + 1}`}
-                    />
-                  </a>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div> */}
       </section>
     </main>
   )

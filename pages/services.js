@@ -35,12 +35,11 @@ export default function services() {
               {/* CTA Button with glow effect */}
               <div className="">
                 <motion.button
-                  className="bg-black text-white border border-white rounded-full px-8 py-3 relative"
+                  className="bg-black text-white border border-[#D0FE1D] rounded-full px-8 py-3 relative"
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 20px rgba(255, 255, 255, 0.5)",
+                    boxShadow: "0 0 20px #D0FE1D",
                   }}
-                  initial={{ boxShadow: "0 0 0 rgba(255, 255, 255, 0)" }}
                 >
                   <Link target="_blank" href="https://www.fiverr.com/s/DB774dV">
                     Work with us!
@@ -53,7 +52,7 @@ export default function services() {
               </div>
 
               {/* Services List */}
-              <div className="flex flex-col gap-4 md:text-right ml-auto text-4xl md:text-5xl text-gray-300">
+              <div className="flex flex-col gap-8 md:text-right ml-auto text-4xl md:text-6xl text-gray-300">
                 <h2>Website Design</h2>
                 <h2>Development</h2>
                 <h2>SEO + CMS</h2>
