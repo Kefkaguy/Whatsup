@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { TextEffect } from "@/components/core/text-effect"
 import ScrollDown from "@/public/svg/ScrollDown"
-
+import BlurFade from "@/components/magicui/blur-fade"
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
 import { motion } from "framer-motion"
 import AdvancedNavbar from "@/components/navbar/Navbar"
@@ -10,6 +10,9 @@ export default function ResponsiveWhatsUpDashboard() {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   )
+
+  const images = ["hello"]
+  const links = ["Hello"]
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth)
@@ -88,7 +91,27 @@ export default function ResponsiveWhatsUpDashboard() {
         />
       </section>
       <section className="min-h-screen flex items-center justify-center p-4">
-        <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1>
+        {/* <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1> */}
+        <div className="columns-1 sm:columns-2  bg-red-400 lg:columns-3 gap-4">
+          {images.map((imageUrl, idx) => (
+            <BlurFade key={imageUrl} delay={0.25 + idx * 0.05} inView>
+              <div className="mb-4 transform translate-y-4">
+                <a
+                  href={links[idx]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    className="w-full h-auto object-cover"
+                    src={imageUrl}
+                    alt={`Random stock image ${idx + 1}`}
+                  />
+                </a>
+              </div>
+            </BlurFade>
+          ))}
+        </div>
       </section>
     </main>
   )
