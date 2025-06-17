@@ -48,7 +48,7 @@ export default function services() {
               </div>
 
               <div className="flex justify-center">
-                <Image src="/Kefka.png" width={300} height={300} />
+                <Image src="/Kefka.png" alt="Kefka" width={300} height={300} />
               </div>
 
               {/* Services List */}
