@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { TextEffect } from "@/components/core/text-effect"
 import ScrollDown from "@/public/svg/ScrollDown"
 
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
 import { motion } from "framer-motion"
-import AdvancedNavbar from "@/components/navbar/Navbar"
 import AwardIcon from "@/components/animations/AwardIcon"
 import ConfettiBurst from "@/components/animations/ConfettiBurst"
 import { MagicCard } from "@/components/magicui/magic-card"
@@ -12,15 +11,6 @@ import BlurFade from "@/components/magicui/blur-fade"
 import { Brush, Code2, SearchCheck } from "lucide-react"
 
 export default function ResponsiveWhatsUpDashboard() {
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  )
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth)
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
   const getRandomColor = () => {
     const letters = "89ABCDEF"
