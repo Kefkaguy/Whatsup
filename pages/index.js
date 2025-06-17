@@ -5,6 +5,11 @@ import ScrollDown from "@/public/svg/ScrollDown"
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity"
 import { motion } from "framer-motion"
 import AdvancedNavbar from "@/components/navbar/Navbar"
+import AwardIcon from "@/components/animations/AwardIcon"
+import ConfettiBurst from "@/components/animations/ConfettiBurst"
+import { MagicCard } from "@/components/magicui/magic-card"
+import BlurFade from "@/components/magicui/blur-fade"
+import { Brush, Code2, SearchCheck } from "lucide-react"
 
 export default function ResponsiveWhatsUpDashboard() {
   const [windowWidth, setWindowWidth] = useState(
@@ -80,6 +85,7 @@ export default function ResponsiveWhatsUpDashboard() {
         </motion.div>
       </section>
 
+
       <section className="w-screen py-24 sm:py-24 md:py-32 lg:py-40 xl:py-64">
         <VelocityScroll
           text="Welcome"
@@ -87,8 +93,98 @@ export default function ResponsiveWhatsUpDashboard() {
           className="font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-9xl md:leading-[5rem]"
         />
       </section>
-      <section className="min-h-screen flex items-center justify-center p-4">
-        <h1 className="text-4xl lg:text-9xl">Will add projects soon...</h1>
+
+      <section className="relative py-24 flex flex-col items-center gap-8">
+        <ConfettiBurst count={30} size={10} />
+        <AwardIcon size={120} />
+        <BlurFade inView>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+            Award-Winning Animations
+          </h2>
+        </BlurFade>
+        <BlurFade inView delay={0.1}>
+          <p className="max-w-2xl text-center text-lg md:text-xl">
+            We craft smooth and immersive experiences that captivate users.
+          </p>
+        </BlurFade>
+      </section>
+
+      <section className="min-h-screen flex flex-col items-center justify-center p-4 gap-8">
+        <h2 className="text-4xl md:text-6xl font-bold mb-6">Featured Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+          <MagicCard className="p-6">
+            <h3 className="text-xl font-bold mb-2">Project Alpha</h3>
+            <p>Innovative design meets seamless performance.</p>
+          </MagicCard>
+          <MagicCard className="p-6">
+            <h3 className="text-xl font-bold mb-2">Project Beta</h3>
+            <p>Interactive experiences built with cutting-edge tech.</p>
+          </MagicCard>
+          <MagicCard className="p-6">
+            <h3 className="text-xl font-bold mb-2">Project Gamma</h3>
+            <p>Engaging, responsive, and user-friendly.</p>
+          </MagicCard>
+          <MagicCard className="p-6">
+            <h3 className="text-xl font-bold mb-2">Project Delta</h3>
+            <p>Sleek interfaces with robust architecture.</p>
+          </MagicCard>
+        </div>
+      </section>
+
+      <section className="py-24 flex flex-col items-center gap-8">
+        <BlurFade inView>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h2>
+        </BlurFade>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+          <MagicCard className="p-6 flex flex-col items-center text-center">
+            <Brush size={48} className="mb-4" />
+            <h3 className="text-xl font-bold mb-2">Design</h3>
+            <p>Elegant and modern interfaces that stand out.</p>
+          </MagicCard>
+          <MagicCard className="p-6 flex flex-col items-center text-center">
+            <Code2 size={48} className="mb-4" />
+            <h3 className="text-xl font-bold mb-2">Development</h3>
+            <p>Scalable solutions built with the latest tech.</p>
+          </MagicCard>
+          <MagicCard className="p-6 flex flex-col items-center text-center">
+            <SearchCheck size={48} className="mb-4" />
+            <h3 className="text-xl font-bold mb-2">SEO & CMS</h3>
+            <p>Optimized content and easy management.</p>
+          </MagicCard>
+        </div>
+      </section>
+
+      <section className="py-24 flex flex-col items-center gap-8 text-center">
+        <BlurFade inView>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">Let's Work Together</h2>
+        </BlurFade>
+        <BlurFade inView delay={0.1}>
+          <p className="max-w-2xl text-lg md:text-xl">
+            Reach out to discuss your next project or collaboration.
+          </p>
+        </BlurFade>
+        <motion.a
+          href="https://www.fiverr.com/s/DB774dV"
+          whileHover={{ scale: 1.05 }}
+          className="px-8 py-3 bg-black text-white rounded-full border border-[#D0FE1D]"
+        >
+          Contact Us
+        </motion.a>
+      </section>
+
+      <section className="py-24 flex flex-col items-center gap-6">
+        <BlurFade inView>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+            About Us
+          </h2>
+        </BlurFade>
+        <BlurFade inView delay={0.1}>
+          <p className="max-w-3xl text-center text-lg md:text-xl">
+            We are a team of creatives passionate about delivering memorable
+            digital experiences. Our goal is to combine modern technologies
+            with refined design to help brands stand out.
+          </p>
+        </BlurFade>
       </section>
     </main>
   )
