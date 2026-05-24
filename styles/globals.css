@@ -4,7 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
 
 body {
-  @apply bg-[#212121] text-[#e6ccb2]
+  @apply overflow-x-hidden bg-[#09090B] text-zinc-100 antialiased
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .font-gluten {
