@@ -1,7 +1,18 @@
 import Head from "next/head"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Mail } from "lucide-react"
 import { apps, getAppBySlug } from "@/lib/apps"
+
+const reveal = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0 },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+}
 
 function Answer({ item }) {
   if (!Array.isArray(item.answer)) {
@@ -30,28 +41,43 @@ export default function AppSupportPage({ app }) {
       </Head>
 
       <main className="px-5 pb-20 pt-32 md:px-8">
-        <section className="mx-auto max-w-4xl">
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+          className="mx-auto max-w-4xl"
+        >
           <Link href="/support" className="text-sm font-semibold text-[#93C5FD]">
             Support Center
           </Link>
-          <h1 className="mt-6 text-5xl font-semibold text-white md:text-7xl">
+          <motion.h1 variants={reveal} className="mt-6 text-5xl font-semibold text-white md:text-7xl">
             {app.name} Support
-          </h1>
-          <p className="mt-5 text-xl leading-8 text-zinc-300">
+          </motion.h1>
+          <motion.p variants={reveal} className="mt-5 text-xl leading-8 text-zinc-300">
             Welcome to {app.name} Support.
-          </p>
-          <p className="mt-4 text-lg leading-8 text-zinc-400">
+          </motion.p>
+          <motion.p variants={reveal} className="mt-4 text-lg leading-8 text-zinc-400">
             {app.supportIntro}
-          </p>
-        </section>
+          </motion.p>
+        </motion.section>
 
-        <section className="mx-auto mt-16 max-w-4xl">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          variants={stagger}
+          className="mx-auto mt-16 max-w-4xl"
+        >
           <h2 className="text-3xl font-semibold text-white">
             Frequently Asked Questions
           </h2>
-          <div className="mt-6 divide-y divide-white/10 rounded-lg border border-white/10 bg-[#0D0D12]">
+          <motion.div variants={reveal} className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/10 bg-[#0D0D12]">
             {app.faq.map((item) => (
-              <article key={item.question} className="p-6">
+              <motion.article
+                key={item.question}
+                whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.025)" }}
+                className="p-6"
+              >
                 <h3 className="text-lg font-semibold text-white">
                   Q: {item.question}
                 </h3>
@@ -61,12 +87,18 @@ export default function AppSupportPage({ app }) {
                   </span>
                   <Answer item={item} />
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <section className="mx-auto mt-16 max-w-4xl rounded-lg border border-white/10 bg-white/[0.035] p-6 md:p-8">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          variants={reveal}
+          className="mx-auto mt-16 max-w-4xl rounded-2xl border border-white/10 bg-white/[0.035] p-6 md:p-8"
+        >
           <Mail className="mb-5 text-[#93C5FD]" size={26} />
           <h2 className="text-3xl font-semibold text-white">Contact Support</h2>
           <div className="mt-6 grid gap-5 text-sm md:grid-cols-2">
@@ -98,7 +130,7 @@ export default function AppSupportPage({ app }) {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
     </>
   )
