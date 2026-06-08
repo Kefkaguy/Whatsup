@@ -14,10 +14,10 @@ export default function LegalPage({ title, children }) {
           transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-3xl"
         >
-          <h1 className="text-5xl font-semibold text-white md:text-6xl">
+          <h1 className="text-5xl font-semibold text-[#1B1814] md:text-6xl">
             {title}
           </h1>
-          <div className="mt-8 space-y-5 rounded-2xl border border-white/10 bg-[#0D0D12] p-6 leading-7 text-zinc-400 md:p-8">
+          <div className="mt-8 space-y-5 rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 leading-7 text-[#4E493E] md:p-8">
             {children}
           </div>
         </motion.section>

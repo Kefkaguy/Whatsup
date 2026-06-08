@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function services() {
   return (
-    <div className="h-screen w-full ">
+    <div className="min-h-screen w-full bg-[#F0ECE3] text-[#1B1814]">
       <div className="px-6 py-24 md:px-12 md:py-32">
         <div className="max-w-[1400px] mx-auto">
           {/* Hero Section */}
@@ -14,31 +14,31 @@ export default function services() {
               {/* Main Heading */}
               <div className="mb-8">
                 <h1 className="flex flex-col text-6xl md:text-7xl font-bold">
-                  <span className="bg-black inline-block p-2 mb-2 w-fit">
+                  <span className="mb-2 inline-block w-fit rounded-xl bg-[#F8F4E9] p-2 text-[#1B1814] shadow-[0_16px_40px_rgba(194,160,114,0.18)]">
                     Unlock Your
                   </span>
-                  <span className="bg-black inline-block p-2 mb-2 w-fit">
+                  <span className="mb-2 inline-block w-fit rounded-xl bg-[#F8F4E9] p-2 text-[#1B1814] shadow-[0_16px_40px_rgba(194,160,114,0.18)]">
                     Potential With
                   </span>
-                  <span className="bg-black inline-block p-2 w-fit">Us</span>
+                  <span className="inline-block w-fit rounded-xl bg-[#F8F4E9] p-2 text-[#1B1814] shadow-[0_16px_40px_rgba(194,160,114,0.18)]">Us</span>
                 </h1>
               </div>
 
               {/* Our Services */}
               <div className="mb-6">
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-300">✦</span>
-                  <span className="text-gray-300">Our Services</span>
+                  <span className="text-[#5B7875]">*</span>
+                  <span className="text-[#4E493E]">Our Services</span>
                 </div>
               </div>
 
               {/* CTA Button with glow effect */}
               <div className="">
                 <motion.button
-                  className="bg-black text-white border border-[#D0FE1D] rounded-full px-8 py-3 relative"
+                  className="relative rounded-full border border-[#506754]/35 bg-[#506754] px-8 py-3 text-[#F8F4E9]"
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 20px #D0FE1D",
+                    boxShadow: "0 18px 40px rgba(80,103,84,0.24)",
                   }}
                 >
                   <Link target="_blank" href="https://www.fiverr.com/s/DB774dV">
@@ -52,7 +52,7 @@ export default function services() {
               </div>
 
               {/* Services List */}
-              <div className="flex flex-col gap-8 md:text-right ml-auto text-4xl md:text-6xl text-gray-300">
+              <div className="ml-auto flex flex-col gap-8 text-4xl text-[#4E493E] md:text-right md:text-6xl">
                 <h2>Website Design</h2>
                 <h2>Development</h2>
                 <h2>SEO + CMS</h2>

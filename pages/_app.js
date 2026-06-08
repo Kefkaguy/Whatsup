@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-[#09090B] text-zinc-100">
+    <div className="min-h-screen bg-[#F0ECE3] text-[#1B1814]">
       <AdvancedNavbar />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
