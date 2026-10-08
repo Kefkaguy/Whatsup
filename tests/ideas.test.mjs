@@ -4,6 +4,8 @@ import { MongoMemoryServer } from "mongodb-memory-server"
 import { MongoClient } from "mongodb"
 import { ideaSchema } from "../lib/idea-schema.mjs"
 import { createIdeasHandler } from "../lib/ideas-handler.mjs"
+import { describeIdeasFailure, reportIdeasFailure } from "../lib/ideas-diagnostics.mjs"
+import { ideaConfigurationIssues } from "../lib/ideas-server.mjs"
 import { initializeIndexes, consumeQuota, clientIp, ipDigest, ideaDigest, sameOrigin, verifyTurnstile, submissionsReady, ownerAllowed, publicProjection, serializeIdea } from "../lib/ideas-server.mjs"
 
 let server, client, db
@@ -123,4 +125,45 @@ test("the submission API saves pending ideas, fails closed, and never publishes 
     const closed = response(); await handler(request(idea), closed)
     assert.equal(closed.statusCode, 503)
   } finally { for (const [key, value] of Object.entries(saved)) { if (value === undefined) delete process.env[key]; else process.env[key] = value } }
+})
+
+test("database diagnostics classify failures and never log driver messages or credentials", () => {
+  const connectionError = { name: "MongoServerSelectionError", message: "mongodb+srv://private-user:private-password@example.invalid connection timed out" }
+  assert.equal(describeIdeasFailure(connectionError), "mongo-server-unreachable")
+  assert.equal(describeIdeasFailure({ code: 18 }), "mongo-authentication-failed")
+  assert.equal(describeIdeasFailure({ code: 13 }), "mongo-permission-denied")
+  assert.equal(describeIdeasFailure({ name: "MongoParseError" }), "mongo-invalid-connection-string")
+  assert.equal(describeIdeasFailure({ message: "querySrv ENOTFOUND private-host" }), "mongo-dns-failed")
+  assert.equal(describeIdeasFailure({ name: "MongoServerSelectionError", reason: { servers: new Map([["private-host", { error: { code: 18 } }]]) } }), "mongo-authentication-failed")
+  const output = []
+  const original = console.error
+  console.error = (...items) => output.push(items.join(" "))
+  try { reportIdeasFailure("load-board", connectionError) } finally { console.error = original }
+  assert.match(output.join(" "), /mongo-server-unreachable/)
+  for (const secret of ["private-user", "private-password", "example.invalid", "mongodb"]) assert.equal(output.join(" ").includes(secret), false)
+})
+
+test("configuration diagnostics name invalid settings without leaking their values", () => {
+  const ready = { MONGODB_URI: "mongodb://test", TURNSTILE_SECRET_KEY: "private-bot-secret", NEXT_PUBLIC_TURNSTILE_SITE_KEY: "public", IDEAS_IP_HASH_SECRET: "x".repeat(32), NEXTAUTH_SECRET: "y".repeat(32), NEXTAUTH_URL: "https://kefka.vercel.app", GITHUB_ID: "id", GITHUB_SECRET: "private-github-secret", IDEAS_ADMIN_GITHUB_ID: "123" }
+  assert.deepEqual(ideaConfigurationIssues(ready), [])
+  const invalid = { ...ready, IDEAS_IP_HASH_SECRET: "private-short-secret", NEXTAUTH_SECRET: "short", NEXTAUTH_URL: "not-a-url" }
+  const issues = ideaConfigurationIssues(invalid)
+  assert.equal(issues.length, 3)
+  assert.equal(JSON.stringify(issues).includes("private-short-secret"), false)
+  assert.equal(submissionsReady({ ...ready, NODE_ENV: "production", VERCEL: "1", NEXTAUTH_URL: "http://localhost:3000" }), false)
+  assert.equal(submissionsReady({ ...ready, NEXTAUTH_URL: "https://kefka.vercel.app/ideas" }), false)
+})
+
+test("an unavailable database stays closed and returns a generic public error", async () => {
+  const previous = process.env.MONGODB_URI
+  process.env.MONGODB_URI = "mongodb://isolated-test"
+  const reported = []
+  try {
+    const handler = createIdeasHandler({ database: async () => { throw { name: "MongoServerSelectionError", message: "private credentials" } }, reportFailure: (operation, error) => reported.push({ operation, reason: describeIdeasFailure(error) }) })
+    const res = { statusCode: 200, setHeader() {}, status(code) { this.statusCode = code; return this }, json(body) { this.body = body; return this } }
+    await handler({ method: "GET" }, res)
+    assert.equal(res.statusCode, 503)
+    assert.equal(JSON.stringify(res.body).includes("private credentials"), false)
+    assert.deepEqual(reported, [{ operation: "load-board", reason: "mongo-server-unreachable" }])
+  } finally { if (previous === undefined) delete process.env.MONGODB_URI; else process.env.MONGODB_URI = previous }
 })

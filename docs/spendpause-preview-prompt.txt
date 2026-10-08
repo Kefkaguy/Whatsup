@@ -1,0 +1,11 @@
+Use case: compositing / ads-marketing.
+Create ONE premium portrait App Store promotional screenshot image for SpendPause using the supplied actual screenshot as the essential central content. Portrait canvas target 1179 × 2556 pixels, ratio 1179:2556. This is a still image, not a video.
+Input image 1: exact SpendPause iPhone screenshot to composite into the design. Preserve the screenshot's interface, layout, visible text, shopping cards, colors and mascot faithfully. Do not invent, redraw, rename, translate, or add app controls. Screenshot must remain straight-on, flat and easily legible, occupying the large majority of the canvas, fully visible within a thin dark graphite rounded phone frame. Preserve its full content rather than cropping its bottom navigation. No perspective tilt.
+Composition: top approximately 20% is beautiful uncluttered editorial headline space; lower 78% a large centered near-edge-to-edge screenshot in a refined device frame, with restrained soft shadow. Warm ivory background, a subtle buttery golden glow behind the device, very faint muted periwinkle accent near one corner. Elegant editorial aesthetic matching the screenshot itself. Strong contrast dark espresso text.
+Text at top verbatim:
+small wordmark: "SpendPause"
+large two-line headline: "Save it."
+"Think it over."
+small supporting line: "Your wishlist, with room to think."
+Use expressive refined serif for the large headline, clean sans-serif for brand and supporting line, very generous margins, polished hierarchy, tasteful and calm. UI screenshot stays untouched; no extra decorative mascot duplicating the one already in screenshot, no fake reviews, no badges or App Store download button, no savings promises, no other added copy, no watermark.
+Output a complete beautiful portrait promotional screenshot asset.

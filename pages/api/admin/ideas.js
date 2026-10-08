@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth/next"
 import { ObjectId } from "mongodb"
 import { authOptions, adminAuthReady } from "@/lib/auth"
 import { getIdeasDb, sameOrigin, serializeIdea } from "@/lib/ideas-server.mjs"
+import { reportIdeasFailure } from "@/lib/ideas-diagnostics.mjs"
 
 export const config = { api: { bodyParser: { sizeLimit: "2kb" } } }
 export default async function handler(req, res) {
@@ -28,5 +29,5 @@ export default async function handler(req, res) {
     if (!["approved", "rejected", "pending"].includes(req.body.status)) return res.status(400).json({ error: "Invalid review decision." })
     const result = await collection.updateOne(filter, { $set: { status: req.body.status, reviewedAt: new Date() } })
     return res.status(result.matchedCount ? 200 : 404).json({ success: Boolean(result.matchedCount) })
-  } catch { return res.status(503).json({ error: "Couldn’t reach the database. Please try again." }) }
+  } catch (error) { reportIdeasFailure("moderate", error); return res.status(503).json({ error: "Couldn’t reach the database. Please try again." }) }
 }

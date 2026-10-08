@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react"
 import { FaApple } from "react-icons/fa"
 
 export default function AppStoreLink({ app, className = "" }) {
+  if (!app.storeUrl) return <span className={`store-button is-coming-soon ${className}`}><FaApple size={25} aria-hidden="true" /><span><small>Coming soon to</small>{" "}<strong>iPhone</strong></span><span className="sr-only">: {app.name}</span></span>
   return (
     <a href={app.storeUrl} target="_blank" rel="noopener noreferrer" className={`store-button ${className}`}>
       <FaApple size={25} aria-hidden="true" />

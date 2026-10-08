@@ -37,6 +37,19 @@ The form stays closed until the database, bot check, secrets, and owner sign-in 
 
 ## Storage
 
+## Troubleshooting a production 503
+
+If `GET /api/ideas` returns “The idea board is taking a short break,” database connection, index creation, or reading failed. Domain matching and Turnstile run later during submission and do not cause that GET failure.
+
+- In Atlas → Security → Network Access, allow Vercel's outgoing connections. Allowing your current/home IP only covers local development. With Vercel Static IPs, add the project's outbound addresses. A temporary `0.0.0.0/0` entry can confirm an access-list problem, but allows connection attempts from anywhere: use a strong, unique database password and restrict database-user permissions to this application's database. Prefer a restricted access list for production.
+- Verify the production `MONGODB_URI` matches the working connection and that the database user can read/write and create indexes in `MONGODB_DB`.
+- Set production `NEXTAUTH_URL=https://kefka.vercel.app`, with no page path. Local development uses its actual local origin.
+- Both `IDEAS_IP_HASH_SECRET` and `NEXTAUTH_SECRET` must contain at least 32 characters. Generate independent random values; do not use short placeholder strings.
+- Environment changes require a new Vercel deployment. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is embedded at build time.
+- After deploying the diagnostic patch, open Vercel runtime logs and refresh `/ideas`. `[ideas]` records name the operation and a safe failure category such as `mongo-server-unreachable`, `mongo-authentication-failed`, or `mongo-permission-denied`. Configuration warnings name invalid variables. Raw driver messages, database URLs, passwords, and submitted content are never logged by these diagnostics.
+
+References: [Atlas access lists](https://www.mongodb.com/docs/atlas/security/ip-access-list/) and [Vercel Static IPs](https://vercel.com/docs/connectivity/static-ips).
+
 On first connection, the application creates `ideas` (unique content digest and status/date indexes) and `idea_limits` (TTL expiry index). Ensure the database user can create indexes.
 
 Ideas are retained until deleted. Rejection hides an idea but retains it in the private queue. Permanent deletion removes the record and its duplicate digest.
