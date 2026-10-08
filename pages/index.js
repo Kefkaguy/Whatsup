@@ -1,343 +1,70 @@
 import Head from "next/head"
 import Link from "next/link"
-import { motion } from "framer-motion"
-import {
-  ArrowRight,
-  Lock,
-  Search,
-  ShieldCheck,
-  Sparkles,
-  WifiOff,
-  Zap,
-} from "lucide-react"
-import { apps, supportCategories } from "@/lib/apps"
+import Image from "next/image"
+import { ArrowDown, ArrowRight, ArrowUpRight, Check, LockKeyhole, Sparkles, WifiOff } from "lucide-react"
+import { apps } from "@/lib/apps"
+import Reveal from "@/components/Reveal"
+import AppStoreLink from "@/components/AppStoreLink"
+import Footer from "@/components/Footer"
+import AppScene from "@/components/AppScene"
 
 const principles = [
-  { label: "Privacy-first", icon: ShieldCheck },
-  { label: "Local-first", icon: Lock },
-  { label: "Clean design", icon: Sparkles },
-  { label: "Fast experience", icon: Zap },
-  { label: "Offline where possible", icon: WifiOff },
+  { icon: LockKeyhole, title: "Your life stays yours.", text: "Personal information belongs on your device. Privacy is part of the foundation." },
+  { icon: Sparkles, title: "Only what you need.", text: "Clear interfaces and thoughtful details. Less friction between you and your day." },
+  { icon: WifiOff, title: "Ready when you are.", text: "No account to create. Core features work offline, so you can get straight to it." },
 ]
 
-const reveal = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0 },
-}
-
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-}
-
-function PhonePreview({ app }) {
+function AppProject({ app, index }) {
   return (
-    <motion.div
-      className="relative mx-auto aspect-[9/18] w-32 rounded-[2rem] border border-[#C2A072]/35 bg-[#C2A072]/35 p-2 shadow-2xl shadow-[#C2A072]/25"
-      animate={{ y: [0, -6, 0] }}
-      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-    >
-      <div className="h-full rounded-[1.45rem] border border-[#C2A072]/25 bg-[#F8F4E9] p-3">
-        <div className="mb-4 flex items-center justify-between">
-          <span className="h-2 w-10 rounded-full bg-[#C2A072]/55" />
-          <span className="h-5 w-5 rounded-md bg-[#506754]" />
-        </div>
-        <div className="space-y-2">
-          <div className="h-12 rounded-xl bg-[#BBC8A6] ring-1 ring-[#506754]/25" />
-          <div className="h-7 rounded-lg bg-[#C2A072]/25" />
-          <div className="h-7 rounded-lg bg-[#C2A072]/25" />
-          <div className="grid grid-cols-2 gap-2 pt-2">
-            <div className="h-12 rounded-lg bg-[#5B7875]/18 ring-1 ring-[#5B7875]/25" />
-            <div className="h-12 rounded-lg bg-[#E3B8A6]/35" />
-          </div>
-        </div>
+    <Reveal as="article" className={`app-project theme-${app.theme}`}>
+      <div className="project-art">
+        <span className="art-label">{app.category}</span>
+        <Link href={`/${app.slug}`} className="project-poster" aria-label={`Explore ${app.name}`}>
+          <Image src={`/apps/${app.slug}-1.jpg`} alt={`${app.name} App Store preview showing its features and interface`} width={416} height={900} sizes="(max-width: 700px) 230px, 280px" />
+        </Link>
+        <span className="art-footnote">Made for your everyday.</span>
       </div>
-      <div className="absolute -right-5 top-12 h-20 w-20 rounded-full bg-[#5B7875]/16 blur-2xl" />
-    </motion.div>
-  )
-}
-
-function AppCard({ app }) {
-  return (
-    <motion.article
-      variants={reveal}
-      whileHover={{
-        y: -5,
-        borderColor: "rgba(80, 103, 84, 0.42)",
-        boxShadow: "0 26px 70px rgba(194,160,114,0.26)",
-      }}
-      transition={{ duration: 0.24, ease: "easeOut" }}
-      className="grid gap-8 rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 shadow-[0_20px_70px_rgba(194,160,114,0.18)] md:grid-cols-[1fr_auto] md:p-8"
-    >
-      <div>
-        <div className="mb-5 flex items-center gap-4">
-          <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#BBC8A6] text-sm font-bold text-[#1B1814] ring-1 ring-[#506754]/25">
-            {app.icon}
-          </div>
-          <div>
-            <h3 className="text-2xl font-semibold text-[#1B1814]">{app.name}</h3>
-            <p className="mt-1 text-sm text-[#4E493E]">{app.summary}</p>
-          </div>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          {app.features.slice(0, 4).map((feature) => (
-            <div
-              key={feature}
-              className="flex items-center gap-3 rounded-xl border border-[#C2A072]/30 bg-[#F0ECE3] px-3 py-3 text-sm text-[#1B1814]"
-            >
-              <span className="h-2 w-2 rounded-full bg-[#5B7875]" />
-              {feature}
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-7 flex flex-wrap gap-3">
-          <a
-            href={app.storeUrl}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#506754] px-4 py-2 text-sm font-semibold text-[#F8F4E9] transition hover:bg-[#5B7875]"
-          >
-            App Store <ArrowRight size={16} />
-          </a>
-          <Link
-            href={app.privacyPath || "/privacy"}
-            className="inline-flex items-center rounded-xl border border-[#C2A072]/45 px-4 py-2 text-sm font-semibold text-[#1B1814] transition hover:border-[#506754]"
-          >
-            Privacy
-          </Link>
-          <Link
-            href={`/support/${app.slug}`}
-            className="inline-flex items-center rounded-xl border border-[#C2A072]/45 px-4 py-2 text-sm font-semibold text-[#1B1814] transition hover:border-[#5B7875]"
-          >
-            Support
-          </Link>
-        </div>
+      <div className="project-copy">
+        <div className="project-meta"><span className="eyebrow">0{index + 1} / {app.category}</span><ArrowUpRight size={21} aria-hidden="true" /></div>
+        <div className="app-name"><Image src={`/apps/${app.slug}-icon.jpg`} alt="" width={52} height={52} /><h3>{app.name}</h3></div>
+        <h4>{app.headline}</h4>
+        <p>{app.shortDescription}</p>
+        <ul className="feature-list">{app.features.slice(0, 4).map(feature => <li key={feature}><Check size={15} />{feature}</li>)}</ul>
+        <div className="project-actions"><AppStoreLink app={app} /><Link href={`/${app.slug}`} className="text-link">Explore app <ArrowRight size={17} /></Link></div>
+        <div className="project-utility"><Link href={`/support/${app.slug}`}>App support</Link><span aria-hidden="true">/</span><Link href={app.privacyPath || "/privacy"}>Privacy policy</Link></div>
       </div>
-      <PhonePreview app={app} />
-    </motion.article>
+    </Reveal>
   )
 }
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>KefCore | Privacy-first apps</title>
-        <meta
-          name="description"
-          content="KefCore builds clean, privacy-first apps that work without accounts."
-        />
-      </Head>
-
+      <Head><title>KefCore | Thoughtful apps for everyday life</title><meta name="description" content="Meet BoxSpot, LiftCore, and PetCare+. Thoughtful, privacy-first iPhone apps for a more organized, balanced everyday." /></Head>
       <main>
-        <section className="relative overflow-hidden px-5 pb-24 pt-32 md:px-8 md:pb-28 md:pt-40">
-          <div className="absolute inset-x-0 top-16 mx-auto h-64 max-w-3xl bg-[#BBC8A6]/35 blur-3xl" />
-          <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-            >
-              <motion.h1
-                variants={reveal}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="max-w-4xl text-6xl font-semibold leading-[0.92] tracking-normal text-[#1B1814] md:text-8xl"
-              >
-                KefCore
-              </motion.h1>
-              <motion.p
-                variants={reveal}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-7 max-w-2xl text-xl leading-8 text-[#4E493E] md:text-2xl"
-              >
-                Building clean, privacy-first apps that work without accounts.
-              </motion.p>
-              <motion.div variants={reveal} className="mt-9 flex flex-wrap gap-3">
-                <Link
-                  href="#apps"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#506754] px-5 py-3 text-sm font-semibold text-[#F8F4E9] shadow-[0_16px_36px_rgba(80,103,84,0.24)] transition hover:bg-[#5B7875]"
-                >
-                  View Apps <ArrowRight size={17} />
-                </Link>
-                <a
-                  href="mailto:erosimcity@gmail.com"
-                  className="rounded-xl border border-[#C2A072]/50 px-5 py-3 text-sm font-semibold text-[#1B1814] transition hover:border-[#506754]"
-                >
-                  Contact
-                </a>
-                <Link
-                  href="/support"
-                  className="rounded-xl border border-[#5B7875]/45 px-5 py-3 text-sm font-semibold text-[#506754] transition hover:border-[#5B7875]"
-                >
-                  Support
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="relative min-w-0"
-            >
-              <div className="absolute -inset-6 rounded-full bg-[#C2A072]/18 blur-3xl" />
-              <motion.div
-                variants={stagger}
-                initial="hidden"
-                animate="visible"
-                className="relative grid min-w-0 gap-4 overflow-hidden rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-5 shadow-[0_20px_70px_rgba(194,160,114,0.16)]"
-              >
-                {apps.map((app) => (
-                  <motion.div
-                    key={app.slug}
-                    variants={reveal}
-                    whileHover={{ x: 4, borderColor: "rgba(91, 120, 117, 0.42)" }}
-                    className="flex min-w-0 items-center gap-4 rounded-xl border border-[#C2A072]/30 bg-[#F0ECE3] p-4"
-                  >
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#BBC8A6] text-xs font-bold text-[#1B1814]">
-                      {app.icon}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-semibold text-[#1B1814]">{app.name}</div>
-                      <div className="hidden truncate text-sm text-[#4E493E] sm:block">
-                        {app.features.slice(0, 3).join(" / ")}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
+        <section className="hero shell">
+          <Reveal className="hero-copy">
+            <span className="eyebrow"><span className="status-dot" /> Independent apps. Thoughtfully made.</span>
+            <h1>A little less clutter.<br />A lot more <em>life.</em></h1>
+            <p>Organize your space. Find your strength. Care for your companions. Simple apps that make room for what matters.</p>
+            <div className="hero-actions"><Link href="#apps" className="button-primary">Discover the apps <ArrowDown size={18} /></Link><Link href="#about" className="text-link">Meet KefCore <ArrowUpRight size={17} /></Link></div>
+            <div className="hero-note"><LockKeyhole size={14} /><span>Your data, your device. No account needed.</span></div>
+          </Reveal>
+          <AppScene />
+        </section>
+        <div className="trust-strip"><div className="shell"><span>Small apps. Considered details.</span><span><LockKeyhole size={16} />Privacy first</span><span><WifiOff size={16} />Offline ready</span><span><Sparkles size={16} />Built with care</span></div></div>
+        <section id="apps" className="apps-section shell">
+          <Reveal className="section-heading"><div><span className="eyebrow">The collection / 01—03</span><h2>Good things.<br /><em>Small packages.</em></h2></div><p>Three different corners of your life.<br />The same thoughtful approach.</p></Reveal>
+          <div className="projects">{apps.map((app, index) => <AppProject key={app.slug} app={app} index={index} />)}</div>
+        </section>
+        <section id="about" className="about-section">
+          <div className="shell"><Reveal className="about-heading"><span className="eyebrow">The thinking behind KefCore</span><h2>Technology should<br />give you <em>room to breathe.</em></h2><p>We’re an independent app studio making everyday tools with a simple belief: useful can be beautiful, and simple can be powerful.</p></Reveal>
+            <div className="principles">{principles.map(({ icon: Icon, title, text }, index) => <Reveal key={title} delay={index * 80}><Icon size={25} strokeWidth={1.5} /><h3>{title}</h3><p>{text}</p></Reveal>)}</div>
           </div>
         </section>
-
-        <motion.section
-          id="apps"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={stagger}
-          className="px-5 py-20 md:px-8"
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-10 max-w-2xl">
-              <motion.h2 variants={reveal} className="text-4xl font-semibold text-[#1B1814] md:text-5xl">
-                Apps
-              </motion.h2>
-              <motion.p variants={reveal} className="mt-4 text-lg leading-7 text-[#4E493E]">
-                Current apps are built for daily use, quick access, and private
-                local storage. Future apps automatically appear here.
-              </motion.p>
-            </div>
-            <div className="grid gap-6">
-              {apps.map((app) => (
-                <AppCard key={app.slug} app={app} />
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        <motion.section
-          id="about"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={stagger}
-          className="border-y border-[#C2A072]/30 px-5 py-20 md:px-8"
-        >
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <h2 className="text-4xl font-semibold text-[#1B1814] md:text-5xl">
-                About
-              </h2>
-              <p className="mt-5 text-lg leading-8 text-[#4E493E]">
-                We build simple apps focused on usability, speed, and privacy.
-                No unnecessary accounts. No clutter.
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {principles.map(({ label, icon: Icon }) => (
-                <motion.div
-                  key={label}
-                  variants={reveal}
-                  whileHover={{ y: -3, borderColor: "rgba(91, 120, 117, 0.42)" }}
-                  className="flex items-center gap-4 rounded-xl border border-[#C2A072]/30 bg-[#F8F4E9] p-5"
-                >
-                  <Icon className="text-[#5B7875]" size={22} />
-                  <span className="font-medium text-[#1B1814]">{label}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={stagger}
-          className="px-5 py-20 md:px-8"
-        >
-          <motion.div variants={reveal} className="mx-auto max-w-7xl rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 shadow-[0_20px_70px_rgba(194,160,114,0.16)] md:p-8">
-            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <h2 className="text-4xl font-semibold text-[#1B1814]">
-                  Support Center
-                </h2>
-                <p className="mt-4 text-lg leading-7 text-[#4E493E]">
-                  Find app help, billing guidance, legal pages, and contact
-                  details.
-                </p>
-                <Link
-                  href="/support"
-                  className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#506754] px-5 py-3 text-sm font-semibold text-[#F8F4E9]"
-                >
-                  Open Support <ArrowRight size={17} />
-                </Link>
-              </div>
-              <div>
-                <div className="mb-4 flex items-center gap-3 rounded-xl border border-[#C2A072]/30 bg-[#F0ECE3] px-4 py-3 text-[#4E493E]">
-                  <Search size={18} />
-                  How can we help?
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {supportCategories.map((category) => (
-                    <div
-                      key={category}
-                      className="rounded-xl border border-[#C2A072]/30 bg-[#F0ECE3] px-4 py-3 text-sm font-medium text-[#1B1814]"
-                    >
-                      {category}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        <footer className="border-t border-[#C2A072]/30 px-5 py-10 md:px-8">
-          <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <div className="font-semibold text-[#1B1814]">KefCore</div>
-              <div className="mt-1 text-sm text-[#4E493E]">
-                Building privacy-first apps.
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-5 text-sm text-[#4E493E]">
-              <Link href="/#apps">Apps</Link>
-              <Link href="/support">Support</Link>
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
-              <Link href="/data-deletion">Data deletion request</Link>
-              <a href="mailto:erosimcity@gmail.com">Contact</a>
-            </div>
-            <div className="text-sm text-[#4E493E]">&copy; 2026 KefCore</div>
-          </div>
-        </footer>
+        <Reveal as="section" className="support-banner shell"><div><span className="eyebrow">A human on the other end</span><h2>A little help goes a long way.</h2><p>Questions, ideas, or something that’s not quite right? We’re here.</p></div><Link href="/support" className="button-primary">Visit support <ArrowUpRight size={18} /></Link></Reveal>
       </main>
+      <Footer />
     </>
   )
 }

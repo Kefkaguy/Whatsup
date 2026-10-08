@@ -1,124 +1,31 @@
+import { useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
-import { motion } from "framer-motion"
-import { ArrowRight, Mail, Search } from "lucide-react"
-import { apps, supportCategories } from "@/lib/apps"
-
-const reveal = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0 },
-}
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-}
+import Image from "next/image"
+import { ArrowUpRight, Plus, Search } from "lucide-react"
+import { apps } from "@/lib/apps"
+import Reveal from "@/components/Reveal"
+import Footer from "@/components/Footer"
 
 export default function SupportCenter() {
+  const [query, setQuery] = useState("")
+  const search = query.trim().toLowerCase()
+  const questions = apps.flatMap(app => app.faq.map(item => ({ ...item, app }))).filter(item =>
+    [item.app.name, item.question, ...(Array.isArray(item.answer) ? item.answer : [item.answer])].join(" ").toLowerCase().includes(search)
+  )
+  const filteredApps = apps.filter(app => [app.name, app.summary, app.supportIntro].join(" ").toLowerCase().includes(search))
   return (
     <>
-      <Head>
-        <title>Support | KefCore</title>
-        <meta
-          name="description"
-          content="KefCore support center for apps, billing, legal, and contact."
-        />
-      </Head>
-
-      <main className="px-5 pb-20 pt-32 md:px-8">
-        <motion.section
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-          className="mx-auto max-w-5xl text-center"
-        >
-          <motion.h1 variants={reveal} className="text-5xl font-semibold text-[#1B1814] md:text-7xl">
-            Support Center
-          </motion.h1>
-          <motion.div variants={reveal} className="mx-auto mt-8 flex max-w-2xl items-center gap-3 rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] px-5 py-4 text-left text-[#4E493E]">
-            <Search size={20} />
-            How can we help?
-          </motion.div>
-        </motion.section>
-
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={stagger}
-          className="mx-auto mt-16 grid max-w-7xl gap-4 md:grid-cols-3"
-        >
-          {supportCategories.map((category) => (
-            <motion.div
-              key={category}
-              variants={reveal}
-              whileHover={{ y: -3, borderColor: "rgba(91, 120, 117, 0.42)" }}
-              className="rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-5 text-lg font-semibold text-[#1B1814]"
-            >
-              {category}
-            </motion.div>
-          ))}
-        </motion.section>
-
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={stagger}
-          className="mx-auto mt-16 max-w-7xl"
-        >
-          <h2 className="text-3xl font-semibold text-[#1B1814]">App Support</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {apps.map((app) => (
-              <motion.div
-                key={app.slug}
-                variants={reveal}
-                whileHover={{ y: -4 }}
-              >
-                <Link
-                  href={`/support/${app.slug}`}
-                  className="group block rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 transition hover:border-[#506754]"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="text-2xl font-semibold text-[#1B1814]">
-                        {app.name}
-                      </div>
-                      <p className="mt-3 text-sm leading-6 text-[#4E493E]">
-                        {app.supportIntro}
-                      </p>
-                    </div>
-                    <ArrowRight
-                      className="text-[#C2A072] transition group-hover:text-[#5B7875]"
-                      size={20}
-                    />
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-120px" }}
-          variants={reveal}
-          className="mx-auto mt-16 max-w-7xl rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 md:p-8"
-        >
-          <Mail className="mb-5 text-[#5B7875]" size={26} />
-          <h2 className="text-3xl font-semibold text-[#1B1814]">Contact</h2>
-          <p className="mt-4 text-[#4E493E]">
-            Email support for help with KefCore apps.
-          </p>
-          <a
-            href="mailto:erosimcity@gmail.com"
-            className="mt-6 inline-flex rounded-xl bg-[#506754] px-5 py-3 text-sm font-semibold text-[#F8F4E9]"
-          >
-            erosimcity@gmail.com
-          </a>
-        </motion.section>
+      <Head><title>Support | KefCore</title><meta name="description" content="Find answers and personal support for BoxSpot, LiftCore, and PetCare+." /></Head>
+      <main className="support-page shell">
+        <Reveal><span className="eyebrow">A human on the other end</span><h1>Let’s make things simple.</h1><p className="support-intro">Find answers, get to know your app, or reach out to us. A little help is always close by.</p></Reveal>
+        <label className="support-search"><Search size={20} aria-hidden="true" /><span className="sr-only">Search apps and frequently asked questions</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search apps, subscriptions, reminders…" /></label>
+        <div className="support-apps">{filteredApps.map(app => <Link key={app.slug} href={`/support/${app.slug}`} className="support-app-link"><Image src={`/apps/${app.slug}-icon.jpg`} alt="" width={48} height={48} /><div>{app.name}<ArrowUpRight size={18} /></div><p>{app.supportIntro}</p></Link>)}</div>
+        <section className="support-faq"><span className="eyebrow">Quick answers</span><h2 className="mt-3">{search ? "Search results" : "Common questions"}</h2><p className="sr-only" role="status" aria-live="polite">{search ? `${questions.length} answers found` : ""}</p><div className="faq-list">{(search ? questions : questions.filter(item => /account|cancel|restore|private|reminders are/.test(item.question.toLowerCase()))).map((item, index) => <details key={`${item.app.slug}-${index}`}><summary><span><span className="eyebrow block mb-1">{item.app.name}</span>{item.question}</span><Plus size={18} /></summary><p>{Array.isArray(item.answer) ? item.answer.join(". ") : item.answer}</p></details>)}</div>{search && !questions.length && <p className="empty-search">No matching answers. Try an app name or contact us below.</p>}</section>
+        <Reveal as="section" className="support-contact"><h2>Still need a hand?</h2><p>Send us your app name and a short description of what’s happening. We’ll help you take the next step.</p><a href="mailto:erosimcity@gmail.com" className="text-link">erosimcity@gmail.com <ArrowUpRight size={17} /></a></Reveal>
+        <div className="legal-links mt-8"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/eula">EULA</Link><Link href="/data-deletion">Data deletion request</Link></div>
       </main>
+      <Footer />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import Reveal from "@/components/Reveal"
+import Footer from "@/components/Footer"
 import { Lock, QrCode, Share2, Trash2 } from "lucide-react"
 
 const sections = [
@@ -56,10 +57,7 @@ export default function BoxSpotPrivacyPage() {
       </Head>
 
       <main className="px-5 pb-20 pt-32 md:px-8">
-        <motion.section
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+        <Reveal as="section"
           className="mx-auto max-w-4xl"
         >
           <Link href="/boxspot" className="text-sm font-semibold text-[#506754]">
@@ -72,7 +70,7 @@ export default function BoxSpotPrivacyPage() {
             Your storage information belongs to you. BoxSpot is designed to keep
             it that way.
           </p>
-        </motion.section>
+        </Reveal>
 
         <section className="mx-auto mt-14 grid max-w-4xl gap-5">
           <div className="rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 md:p-8">
@@ -167,6 +165,7 @@ export default function BoxSpotPrivacyPage() {
           </article>
         </section>
       </main>
+      <Footer />
     </>
   )
 }

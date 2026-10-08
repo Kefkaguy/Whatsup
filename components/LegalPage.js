@@ -1,27 +1,18 @@
 import Head from "next/head"
-import { motion } from "framer-motion"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import Reveal from "@/components/Reveal"
+import Footer from "@/components/Footer"
 
 export default function LegalPage({ title, children }) {
   return (
     <>
-      <Head>
-        <title>{title} | KefCore</title>
-      </Head>
-      <main className="px-5 pb-20 pt-32 md:px-8">
-        <motion.section
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl"
-        >
-          <h1 className="text-5xl font-semibold text-[#1B1814] md:text-6xl">
-            {title}
-          </h1>
-          <div className="mt-8 space-y-5 rounded-2xl border border-[#C2A072]/30 bg-[#F8F4E9] p-6 leading-7 text-[#4E493E] md:p-8">
-            {children}
-          </div>
-        </motion.section>
+      <Head><title>{title} | KefCore</title></Head>
+      <main className="legal-page shell">
+        <Link href="/support" className="breadcrumb"><ArrowLeft size={15} />Support center</Link>
+        <Reveal><h1>{title}</h1><div className="legal-content">{children}</div></Reveal>
       </main>
+      <Footer />
     </>
   )
 }
