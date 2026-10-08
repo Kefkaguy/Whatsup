@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:ideas": "node --test tests/ideas.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -51,7 +52,10 @@
     "gsap": "^3.12.7",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.439.0",
-    "next": "^14.2.28",
+    "mongodb": "^7.7.0",
+    "motion": "14.0.0",
+    "next": "15.5.27",
+    "next-auth": "^4.24.15",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-day-picker": "^8.10.1",
@@ -74,6 +78,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "mongodb-memory-server": "^11.3.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
   }

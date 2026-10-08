@@ -62,6 +62,7 @@ export default function Home() {
             <div className="principles">{principles.map(({ icon: Icon, title, text }, index) => <Reveal key={title} delay={index * 80}><Icon size={25} strokeWidth={1.5} /><h3>{title}</h3><p>{text}</p></Reveal>)}</div>
           </div>
         </section>
+        <Reveal as="section" className="ideas-invitation shell"><div><span className="eyebrow">Help shape what comes next</span><h2>Got a little <em>“what if?”</em></h2><p>Tell us about an offline app you wish existed. A small everyday problem could be the start of something useful.</p></div><Link href="/ideas" className="button-primary">Share your app idea <ArrowUpRight size={18} /></Link></Reveal>
         <Reveal as="section" className="support-banner shell"><div><span className="eyebrow">A human on the other end</span><h2>A little help goes a long way.</h2><p>Questions, ideas, or something that’s not quite right? We’re here.</p></div><Link href="/support" className="button-primary">Visit support <ArrowUpRight size={18} /></Link></Reveal>
       </main>
       <Footer />

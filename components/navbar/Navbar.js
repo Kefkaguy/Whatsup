@@ -3,7 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 
-const links = [{ label: "The apps", href: "/#apps" }, { label: "Our approach", href: "/#about" }, { label: "Support", href: "/support" }]
+const links = [{ label: "The apps", href: "/#apps" }, { label: "Our approach", href: "/#about" }, { label: "App ideas", href: "/ideas" }, { label: "Portfolio", href: "/portfolio" }, { label: "Support", href: "/support" }]
 
 export default function AdvancedNavbar() {
   const [isOpen, setIsOpen] = useState(false)

@@ -11,7 +11,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <span>&copy; 2026 KefCore</span>
-        <div><Link href="/#apps">Apps</Link><Link href="/support">Support</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/eula">EULA</Link><Link href="/data-deletion">Data deletion</Link></div>
+        <div><Link href="/#apps">Apps</Link><Link href="/ideas">App ideas</Link><Link href="/portfolio">Portfolio</Link><Link href="/support">Support</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/eula">EULA</Link><Link href="/data-deletion">Data deletion</Link></div>
         <span>Made with care.</span>
       </div>
     </footer>

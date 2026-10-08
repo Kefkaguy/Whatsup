@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 
 const contents = [
   { id: "overview", label: "Our approach" },
+  { id: "website", label: "Website app ideas" },
   { id: "boxspot", label: "BoxSpot privacy" },
   { id: "deletion", label: "Deleting your data" },
   { id: "contact", label: "Questions & contact" },
@@ -56,20 +57,26 @@ export default function PrivacyPage() {
               <p>KefCore apps are built with privacy-first, local-first principles. App data is stored on your device unless a specific app feature clearly states otherwise.</p>
               <p>The following app-specific details explain how BoxSpot handles the information you enter.</p>
             </Reveal>
+            <Reveal as="section" id="website" className="privacy-section">
+              <span className="eyebrow">02 / Website app ideas</span><h2>A shared notebook, with a little care.</h2>
+              <p>The website’s idea board is an online feature, separate from the local storage used by our apps. When you submit an idea, we save its title, description, category, optional nickname, submission date, and review status in MongoDB. Approved ideas and nicknames are visible to everyone on the board. Please leave out private or sensitive information.</p>
+              <p>To reduce spam, we keep a keyed hash of your connection’s IP address in temporary rate-limit records. These expire within roughly 48 hours; raw IP addresses are not saved in idea submissions or rate-limit records. Our hosting and security providers may process connection information to deliver and protect the website.</p>
+              <p>Cloudflare Turnstile checks submissions for bots. The private review page uses GitHub sign-in for the owner. Submitted ideas remain stored until removed by the owner; to request removal, contact <a href="mailto:erosimcity@gmail.com">erosimcity@gmail.com</a> with the idea’s title and relevant details.</p>
+            </Reveal>
             <Reveal as="section" id="boxspot" className="privacy-section">
-              <span className="eyebrow">02 / BoxSpot</span><h2>Your storage information stays yours.</h2>
+              <span className="eyebrow">03 / BoxSpot</span><h2>Your storage information stays yours.</h2>
               <p>BoxSpot does not require an account, does not require personal information, does not show advertisements, does not use analytics tracking, and does not include third-party advertising SDKs. We do not sell user data and do not share user data with third parties.</p>
               {boxspotSections.slice(0, 2).map(section => <div className="privacy-subsection" key={section.title}><h3>{section.title}</h3><p>{section.body}</p></div>)}
               <div className="privacy-subsection"><h3>Information BoxSpot does not collect</h3><p>BoxSpot simply stores the information you voluntarily enter for organizing your own belongings. BoxSpot does not collect:</p><ul className="privacy-data-list">{notCollected.map(item => <li key={item}><span aria-hidden="true" />{item}</li>)}</ul></div>
               {boxspotSections.slice(2).map(section => <div className="privacy-subsection" key={section.title}><h3>{section.title}</h3><p>{section.body}</p></div>)}
             </Reveal>
             <Reveal as="section" id="deletion" className="privacy-section">
-              <span className="eyebrow">03 / Your data</span><h2>Deleting your data.</h2>
+              <span className="eyebrow">04 / Your data</span><h2>Deleting your data.</h2>
               <p>For BoxSpot, deleting the app removes locally stored data unless you have created your own backup.</p>
               <Link href="/data-deletion" className="text-link">Data deletion information <ArrowUpRight size={16} /></Link>
             </Reveal>
             <Reveal as="section" id="contact" className="privacy-section privacy-contact">
-              <span className="eyebrow">04 / Questions & contact</span><h2>Let’s make it clear.</h2>
+              <span className="eyebrow">05 / Questions & contact</span><h2>Let’s make it clear.</h2>
               <p>If you have questions about this Privacy Policy or need support, email us. Include the app name and a short description of your question or issue.</p>
               <a href="mailto:erosimcity@gmail.com?subject=Privacy%20question" className="text-link">erosimcity@gmail.com <ArrowUpRight size={17} /></a>
             </Reveal>

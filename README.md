@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## App ideas and personal portfolio
+
+See [the setup guide](docs/ideas-setup.md) for MongoDB, bot protection, owner sign-in, moderation, and environment variables. Copy `.env.example` to `.env.local` to configure the feature.
+
 ## Getting Started
 
 First, run the development server:
