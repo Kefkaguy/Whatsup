@@ -29,7 +29,7 @@ export default function AppScene() {
   }
 
   return (
-    <Reveal className="hero-art" delay={100} onPointerMove={moveScene} onPointerLeave={resetScene}>
+    <Reveal className="hero-art hero-art-collection" delay={100} onPointerMove={moveScene} onPointerLeave={resetScene}>
       <div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" />
       <span className="hero-art-caption eyebrow">A small collection.<br />A meaningful difference.</span>
       {apps.map((app, index) => <Link key={app.slug} href={`/${app.slug}`} className={`floating-app floating-app-${index}`} aria-label={`Explore ${app.name}`}><Image src={app.iconPath || `/apps/${app.slug}-icon.jpg`} alt="" width={150} height={150} priority /><span>{app.name}<ArrowUpRight size={14} /></span></Link>)}

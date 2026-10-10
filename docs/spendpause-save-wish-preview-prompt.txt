@@ -1,0 +1,13 @@
+Use case: compositing / ads-marketing.
+Create ONE portrait promotional image for SpendPause, the third image in a matching App Store screenshot series.
+INPUT IMAGE 1 is the actual "Save a wish" app screenshot that MUST be used inside the phone. INPUT IMAGE 2 is the approved previous promotional image for STYLE AND LAYOUT ONLY; do not put its Reflections screen in the phone.
+Match image 2's portrait canvas proportions, ivory background, soft pale golden curved shapes, subtle periwinkle upper-right accent, espresso editorial serif typography, centered realistic graphite iPhone frame, soft shadows, and large screen coverage. Target same 852 x 1846 portrait dimensions and coordinated series layout.
+Top text verbatim:
+small brand: "SpendPause"
+large two-line headline: "Just drop"
+"the link."
+supporting copy: "A product, a subscription,"
+"anything worth a pause."
+Use the same serif and visual headline hierarchy as image 2, with centered generous margins and muted clean sans-serif supporting text.
+Below the headline, a large straight-on phone in the same position and size as the prior image, containing ONLY the actual input image 1 screenshot. Keep all screenshot UI, text, content, colors, and positions faithful: time 10:01, gray status area, rounded cream Save a wish modal, Cancel control, original "Just drop the link." inner headline, supporting text, Paste control, URL input truncated as shown, "Details found. Make them yours below.", exact watch product image, Remove photo text, THE WISH field containing "Apple Watch Ultra 4", currency USD and price 799, original "Save & take a pause" button with pause symbol, and original small footer "No rush. No pressure. Just a little perspective." Fully visible original screenshot including its bottom margin. Do not invent hidden fields, navigation, buttons, extra products, or features. Preserve the screenshot's actual modal presentation. Do not put a second Dynamic Island or duplicate the status bar.
+No tilt, no cropped UI, no advertising badges, no ratings, no new mascot, no watermark, no more added text. The result should look like a cohesive companion to image 2 with the new screenshot and new external headline.

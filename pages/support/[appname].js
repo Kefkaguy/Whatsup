@@ -21,7 +21,7 @@ export default function AppSupportPage({ app }) {
         <Reveal><span className="eyebrow">Made with care. Supported with care.</span><h1>{app.name} support</h1><p className="support-intro">{app.supportSubtitle || app.supportIntro}</p><div className="support-top-actions"><AppStoreLink app={app} /><Link href={`/${app.slug}`} className="text-link">Explore {app.name}<ArrowUpRight size={17} /></Link></div></Reveal>
         <Reveal as="section" className="support-faq mt-14"><h2>Frequently asked questions.</h2><div className="faq-list">{app.faq.map(item => <details key={item.question}><summary>{item.question}<Plus size={18} /></summary><Answer item={item} /></details>)}</div></Reveal>
         <Reveal as="section" className="support-contact"><h2>We’re here to help.</h2><p>Have a question or an idea for {app.name}? We’d love to hear from you.</p><a href={`mailto:${app.supportEmail}?subject=${encodeURIComponent(app.name + " support")}`} className="text-link">{app.supportEmail}<ArrowUpRight size={17} /></a><dl className="contact-grid"><div><dt>App</dt><dd>{app.appName}</dd></div><div><dt>Response time</dt><dd>{app.responseTime || "Usually within 24–48 hours"}</dd></div></dl></Reveal>
-        <div className="legal-links mt-8"><Link href={app.privacyPath || "/privacy"}>Privacy policy</Link><Link href="/terms">Terms</Link><Link href="/eula">EULA</Link></div>
+        <div className="legal-links mt-8">{(app.legalLinks || [{ label: "Privacy policy", href: app.privacyPath || "/privacy" }, { label: "Terms", href: "/terms" }, { label: "EULA", href: "/eula" }]).map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
       </main>
       <Footer />
     </>

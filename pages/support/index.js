@@ -16,7 +16,7 @@ export default function SupportCenter() {
   const filteredApps = apps.filter(app => [app.name, app.summary, app.supportIntro].join(" ").toLowerCase().includes(search))
   return (
     <>
-      <Head><title>Support | KefCore</title><meta name="description" content="Find answers and personal support for SpendPause, BoxSpot, LiftCore, and PetCare+." /></Head>
+      <Head><title>Support | KefCore</title><meta name="description" content="Find answers and personal support for KefCull, SpendPause, BoxSpot, LiftCore, and PetCare+." /></Head>
       <main className="support-page shell">
         <Reveal><span className="eyebrow">A human on the other end</span><h1>Let’s make things simple.</h1><p className="support-intro">Find answers, get to know your app, or reach out to us. A little help is always close by.</p></Reveal>
         <label className="support-search"><Search size={20} aria-hidden="true" /><span className="sr-only">Search apps and frequently asked questions</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search apps, subscriptions, reminders…" /></label>

@@ -1,0 +1,13 @@
+Use case: compositing / ads-marketing.
+Create ONE portrait promotional image for SpendPause, the second image in a coordinated App Store screenshot series.
+INPUT IMAGE 1 is the actual Reflections screen to put inside the phone. INPUT IMAGE 2 is the approved previous promotional image and is ONLY a style/layout reference, not content for the phone.
+Match image 2's portrait proportions, ivory background, soft pale golden curved shapes, subtle periwinkle corner accent, dark espresso typography, centered realistic graphite iPhone frame, soft shadows, overall visual polish, headline hierarchy and large screen coverage. Output portrait approximately 1179 × 2556 pixels if available, same aspect ratio as image 2.
+Top text exactly:
+"SpendPause"
+"Room for"
+"what matters."
+"Every thoughtful decision is a small win."
+Small bold sans-serif brand on top; large elegant editorial serif two-line headline, balanced margins, then small muted supporting sans-serif line. Below, a large straight-on device with the screenshot from image 1 occupying almost the entire lower section.
+Preserve all screenshot content and layout faithfully: time 09:55, "A little perspective", "Room for what matters.", summary $3,198 in purchases you chose to pass on, 0 bought, 2 let go, decision filters, two original shopping rows and their original prices, and original bottom navigation with Reflections selected. The interface and text must be crisp and readable without inventing any controls or additional items. Preserve screenshot's original warm colors. Screenshot fully visible, no tilt, no clipped navigation.
+Do not use the Wishlist content from image 2. No extra mascot, no reviews, no download badge, no watermark, no new savings guarantees. The $3,198 figure stays only as original in-app screenshot example, never an outer advertising claim.
+Deliver a complete cohesive promotional image visually matching image 2.

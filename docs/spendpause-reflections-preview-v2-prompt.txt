@@ -1,0 +1,7 @@
+Edit the supplied SpendPause promotional image. Change ONLY the large external headline at the top above the device, currently "Room for what matters.", to exactly:
+"A little less,"
+"a lot more."
+Keep the same large elegant dark espresso serif, centered two-line composition, matching scale and visual hierarchy, with comfortable margins. The full phrase including punctuation is "A little less, a lot more."
+Keep the small brand "SpendPause" exactly as-is.
+Keep the supporting sentence below the headline EXACTLY as-is: "Every thoughtful decision is a small win."
+Keep everything else unchanged: ivory/golden/periwinkle background, graphite iPhone frame and shadows, device size and placement, every pixel of the app screenshot content and text inside the phone. Do not change the in-app heading "Room for what matters." Do not change the $3,198 card, filters, shopping items, icons, or navigation. Preserve full portrait canvas and existing dimensions/aspect ratio. No new objects or text.

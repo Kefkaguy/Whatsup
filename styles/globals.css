@@ -658,3 +658,52 @@ button:disabled:hover { transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .app-project:hover .pause-mascot { transform: none; }
 }
+
+/* KefCull and a collection that spans desktop and mobile. */
+.theme-cull { --art-bg: #e0e9d6; --art-ink: #2d4431; }
+.cull-art { position: relative; width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center; color: #233827; }
+.cull-platform { display: inline-flex; align-items: center; gap: 10px; border: 1px solid #bdcfab; border-radius: 100px; padding: 9px 15px; background: #edf3e7; font-size: 10px; letter-spacing: .03em; }
+.cull-mark { position: relative; padding: 25px; margin: 26px 0 22px; border: 1px solid #c4d3b7; border-radius: 50%; background: radial-gradient(circle, #f4f8ed 0%, #d4e2c6 75%); transition: transform var(--motion-slow) var(--motion-ease); }
+.cull-mark img { display: block; width: 185px; height: auto; border-radius: 28%; box-shadow: 0 20px 30px rgb(25 48 30 / 10%); }
+.cull-art h3 { font-size: clamp(27px, 3vw, 38px); letter-spacing: -.04em; line-height: 1.15; font-weight: 500; }
+.cull-art h3 em { font-family: Georgia, serif; }
+.cull-workflow { display: flex; justify-content: center; gap: 12px; width: 100%; margin: 25px 0 19px; }
+.cull-workflow > span { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 10px; border: 1px solid #c1d0b5; border-radius: 12px; background: #edf3e7; min-width: 75px; font-size: 11px; }
+.cull-art > p { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; color: #50694c; }
+.app-project:hover .cull-mark { transform: translateY(-5px); }
+.windows-download { background: #263e2e; }
+.product-story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; margin: 55px 0 70px; }
+.product-story { scroll-margin-top: 100px; padding: 32px; background: #f9faf5; border: 1px solid var(--line); border-radius: 18px; }
+.product-story h2 { font-size: clamp(26px, 3vw, 35px); line-height: 1.15; letter-spacing: -.045em; margin: 20px 0; font-weight: 500; }
+.product-story > p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+.product-story .feature-list { display: flex; flex-direction: column; margin-bottom: 0; }
+.product-story .feature-list li { align-items: flex-start; line-height: 1.75; font-size: 12px; }
+.product-story .feature-list svg { flex-shrink: 0; margin-top: 4px; }
+.hero-art.hero-art-collection { height: auto; min-height: 530px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 30px; padding: 90px 36px 28px; }
+.hero-art-collection .floating-app { position: relative; inset: auto; transform: none; justify-self: center; gap: 11px; }
+.hero-art-collection .floating-app img { width: 96px; height: 96px; border-radius: 23px; }
+.hero-art-collection .floating-app-4 { grid-column: 1 / -1; }
+.hero-art-collection .art-spark-one { left: 47%; top: 275px; }
+.hero-art-collection .hero-art-caption { top: 34px; left: 35px; }
+.support-apps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.maker-app-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 0; }
+.maker-app-project:nth-child(4) { border-left: 0; padding-left: 0; }
+@media (min-width: 761px) and (max-width: 1050px) {
+  .maker-app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .maker-app-project:nth-child(4) { border-left: 1px solid var(--line); padding-left: 32px; }
+  .maker-app-project:nth-child(5) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 1050px) {
+  .support-apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .product-story-grid { grid-template-columns: 1fr; gap: 18px; margin: 40px 0; }
+  .product-story { padding: 25px; }
+  .maker-app-grid, .support-apps { grid-template-columns: 1fr; }
+  .maker-app-grid { gap: 0; }
+  .cull-mark { padding: 20px; }
+  .cull-mark img { width: 160px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-project:hover .cull-mark { transform: none; }
+}

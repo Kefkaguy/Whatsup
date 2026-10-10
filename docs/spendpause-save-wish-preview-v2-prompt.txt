@@ -1,0 +1,9 @@
+Edit the supplied SpendPause promotional image. Change ONLY the large external headline above the phone from "Just drop the link." to exactly "Think Before You Tap Buy."
+Render the new headline as two centered lines:
+"Think Before"
+"You Tap Buy."
+Keep exact capitalization and final period. Match the existing elegant large dark espresso serif typeface and premium hierarchy; adjust font size slightly if necessary for comfortable margins and fitting the same headline space.
+Keep brand "SpendPause" at the top unchanged. Keep supporting sentence exactly as currently shown, using the same two-line arrangement:
+"A product, a subscription,"
+"anything worth a pause."
+Preserve EVERYTHING else unchanged: full portrait canvas dimensions/aspect ratio, warm ivory/golden/periwinkle background, graphite device frame, shadow, device position/size, and all of the app screenshot content inside it. The in-app heading "Just drop the link." must stay unchanged. Preserve status bar, Save a wish, Cancel, Paste, truncated URL, found-details note, watches, Apple Watch Ultra 4 field, USD 799, Save & take a pause button, and footer. Do not redraw interface, add controls, crop, tilt or add new objects/text.

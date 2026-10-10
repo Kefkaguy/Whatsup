@@ -8,6 +8,7 @@ const contents = [
   { id: "overview", label: "Our approach" },
   { id: "website", label: "Website app ideas" },
   { id: "boxspot", label: "BoxSpot privacy" },
+  { id: "kefcull", label: "KefCull privacy" },
   { id: "deletion", label: "Deleting your data" },
   { id: "contact", label: "Questions & contact" },
 ]
@@ -29,7 +30,7 @@ export default function PrivacyPage() {
     <>
       <Head>
         <title>Privacy Policy | KefCore</title>
-        <meta name="description" content="Read about KefCore's local-first approach to privacy, BoxSpot data storage and sharing, and how to contact us about your information." />
+        <meta name="description" content="Read about KefCore's local-first approach to privacy, BoxSpot data storage, KefCull's offline photo analysis, and how to contact us." />
       </Head>
       <main className="privacy-page shell">
         <Link href="/support" className="breadcrumb"><ArrowLeft size={15} />Support center</Link>
@@ -55,7 +56,7 @@ export default function PrivacyPage() {
             <Reveal as="section" id="overview" className="privacy-section">
               <span className="eyebrow">01 / Our approach</span><h2>Built around your privacy.</h2>
               <p>KefCore apps are built with privacy-first, local-first principles. App data is stored on your device unless a specific app feature clearly states otherwise.</p>
-              <p>The following app-specific details explain how BoxSpot handles the information you enter.</p>
+              <p>The following app-specific details explain how BoxSpot and KefCull handle the information you use in each app.</p>
             </Reveal>
             <Reveal as="section" id="website" className="privacy-section">
               <span className="eyebrow">02 / Website app ideas</span><h2>A shared notebook, with a little care.</h2>
@@ -70,13 +71,20 @@ export default function PrivacyPage() {
               <div className="privacy-subsection"><h3>Information BoxSpot does not collect</h3><p>BoxSpot simply stores the information you voluntarily enter for organizing your own belongings. BoxSpot does not collect:</p><ul className="privacy-data-list">{notCollected.map(item => <li key={item}><span aria-hidden="true" />{item}</li>)}</ul></div>
               {boxspotSections.slice(2).map(section => <div className="privacy-subsection" key={section.title}><h3>{section.title}</h3><p>{section.body}</p></div>)}
             </Reveal>
+            <Reveal as="section" id="kefcull" className="privacy-section">
+              <span className="eyebrow">04 / KefCull</span><h2>Your photo collection stays on your computer.</h2>
+              <p>KefCull is a private, offline photo culling app for Windows. Photos, previews, analysis results, ratings, and review decisions remain on your computer. Photos are not uploaded for analysis; all bundled model inference runs locally.</p>
+              <div className="privacy-subsection"><h3>Catalog organization and review</h3><p>Suggested subject folders organize your catalog without moving the original files. Keep and reject decisions are saved locally. Rejecting a photo does not delete its original, and KefCull does not identify individual people or automatically keep or reject images.</p></div>
+              <div className="privacy-subsection"><h3>Exporting your favorites</h3><p>When you choose an export destination, KefCull copies the original files, preserves their bytes, verifies the copies, and handles filename conflicts without overwriting existing files.</p></div>
+              <Link href="/support/kefcull" className="text-link">Help with KefCull <ArrowUpRight size={16} /></Link>
+            </Reveal>
             <Reveal as="section" id="deletion" className="privacy-section">
-              <span className="eyebrow">04 / Your data</span><h2>Deleting your data.</h2>
+              <span className="eyebrow">05 / Your data</span><h2>Deleting your data.</h2>
               <p>For BoxSpot, deleting the app removes locally stored data unless you have created your own backup.</p>
               <Link href="/data-deletion" className="text-link">Data deletion information <ArrowUpRight size={16} /></Link>
             </Reveal>
             <Reveal as="section" id="contact" className="privacy-section privacy-contact">
-              <span className="eyebrow">05 / Questions & contact</span><h2>Let’s make it clear.</h2>
+              <span className="eyebrow">06 / Questions & contact</span><h2>Let’s make it clear.</h2>
               <p>If you have questions about this Privacy Policy or need support, email us. Include the app name and a short description of your question or issue.</p>
               <a href="mailto:erosimcity@gmail.com?subject=Privacy%20question" className="text-link">erosimcity@gmail.com <ArrowUpRight size={17} /></a>
             </Reveal>

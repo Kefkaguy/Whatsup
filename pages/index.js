@@ -7,6 +7,7 @@ import Reveal from "@/components/Reveal"
 import AppStoreLink from "@/components/AppStoreLink"
 import Footer from "@/components/Footer"
 import SpendPauseArt from "@/components/SpendPauseArt"
+import KefCullArt from "@/components/KefCullArt"
 import AppScene from "@/components/AppScene"
 
 const principles = [
@@ -20,7 +21,7 @@ function AppProject({ app, index }) {
     <Reveal as="article" className={`app-project theme-${app.theme}`}>
       <div className="project-art">
         <span className="art-label">{app.category}</span>
-        {app.artworkType === "icon" ? <SpendPauseArt /> : <Link href={`/${app.slug}`} className="project-poster" aria-label={`Explore ${app.name}`}>
+        {app.artworkType === "kefcull" ? <KefCullArt /> : app.artworkType === "icon" ? <SpendPauseArt /> : <Link href={`/${app.slug}`} className="project-poster" aria-label={`Explore ${app.name}`}>
           <Image src={`/apps/${app.slug}-1.jpg`} alt={`${app.name} App Store preview showing its features and interface`} width={416} height={900} sizes="(max-width: 700px) 230px, 280px" />
         </Link>}
         <span className="art-footnote">Made for your everyday.</span>
@@ -41,21 +42,21 @@ function AppProject({ app, index }) {
 export default function Home() {
   return (
     <>
-      <Head><title>KefCore | Thoughtful apps for everyday life</title><meta name="description" content="Meet SpendPause, BoxSpot, LiftCore, and PetCare+. Thoughtful, privacy-first iPhone apps for a more organized, balanced everyday." /></Head>
+      <Head><title>KefCore | Thoughtful apps for everyday life</title><meta name="description" content="Meet KefCull for Windows, plus SpendPause, BoxSpot, LiftCore, and PetCare+ for iPhone. Thoughtful apps that make room for what matters." /></Head>
       <main>
         <section className="hero shell">
           <Reveal className="hero-copy">
             <span className="eyebrow"><span className="status-dot" /> Independent apps. Thoughtfully made.</span>
             <h1>A little less clutter.<br />A lot more <em>life.</em></h1>
-            <p>Organize your space. Find your strength. Care for your companions. Give purchases room to breathe. Simple apps that make room for what matters.</p>
+            <p>From your everyday routines to your favorite photos. Thoughtful apps for iPhone and Windows that make room for what matters.</p>
             <div className="hero-actions"><Link href="#apps" className="button-primary">Discover the apps <ArrowDown size={18} /></Link><Link href="#about" className="text-link">Meet KefCore <ArrowUpRight size={17} /></Link></div>
-            <div className="hero-note"><LockKeyhole size={14} /><span>Your data, your device. No account needed.</span></div>
+            <div className="hero-note"><LockKeyhole size={14} /><span>Your data, your device. Built with care.</span></div>
           </Reveal>
           <AppScene />
         </section>
         <div className="trust-strip"><div className="shell"><span>Small apps. Considered details.</span><span><LockKeyhole size={16} />Privacy first</span><span><WifiOff size={16} />Offline ready</span><span><Sparkles size={16} />Built with care</span></div></div>
         <section id="apps" className="apps-section shell">
-          <Reveal className="section-heading"><div><span className="eyebrow">The collection / 01—04</span><h2>Good things.<br /><em>Small packages.</em></h2></div><p>Four different corners of your life.<br />The same thoughtful approach.</p></Reveal>
+          <Reveal className="section-heading"><div><span className="eyebrow">The collection / 01—{String(apps.length).padStart(2, "0")}</span><h2>Good things.<br /><em>Small packages.</em></h2></div><p>Different corners of your life.<br />The same thoughtful approach.</p></Reveal>
           <div className="projects">{apps.map((app, index) => <AppProject key={app.slug} app={app} index={index} />)}</div>
         </section>
         <section id="about" className="about-section">
