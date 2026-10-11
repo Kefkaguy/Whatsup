@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { ArrowUpRight, Menu, X } from "lucide-react"
+import Brand from "@/components/Brand"
 
 const links = [{ label: "The apps", href: "/#apps" }, { label: "Our approach", href: "/#about" }, { label: "App ideas", href: "/ideas" }, { label: "Portfolio", href: "/portfolio" }, { label: "Support", href: "/support" }]
 
@@ -26,11 +27,11 @@ export default function AdvancedNavbar() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="shell navbar" aria-label="Main navigation">
-        <Link href="/" className="brand"><span className="brand-mark">k.</span>KefCore</Link>
-        <div className="desktop-nav">{links.map(link => <Link key={link.href} href={link.href} className="nav-link" aria-current={router.asPath === link.href ? "page" : undefined}>{link.label}</Link>)}<a href="mailto:erosimcity@gmail.com" className="nav-contact">Let’s talk <ArrowUpRight size={15} /></a></div>
+        <Brand priority />
+        <div className="desktop-nav">{links.map(link => <Link key={link.href} href={link.href} className="nav-link" aria-current={router.asPath === link.href ? "page" : undefined}>{link.label}</Link>)}<a href="mailto:hello@kefcore.com" className="nav-contact">Let’s talk <ArrowUpRight size={15} /></a></div>
         <button ref={menuButton} className="menu-toggle" type="button" aria-expanded={isOpen} aria-controls="mobile-navigation" aria-label={isOpen ? "Close menu" : "Open menu"} onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={21} /> : <Menu size={21} />}</button>
       </nav>
-      {isOpen && <div id="mobile-navigation" className="mobile-nav shell">{links.map(link => <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}>{link.label}<ArrowUpRight size={17} /></Link>)}<a href="mailto:erosimcity@gmail.com" onClick={() => setIsOpen(false)}>Let’s talk <ArrowUpRight size={17} /></a></div>}
+      {isOpen && <div id="mobile-navigation" className="mobile-nav shell">{links.map(link => <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}>{link.label}<ArrowUpRight size={17} /></Link>)}<a href="mailto:hello@kefcore.com" onClick={() => setIsOpen(false)}>Let’s talk <ArrowUpRight size={17} /></a></div>}
     </header>
   )
 }

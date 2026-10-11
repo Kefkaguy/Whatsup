@@ -13,7 +13,7 @@ export default function EulaPage() {
         notices are available in the app’s Model licenses screen.
       </p>
       <p>
-        Contact erosimcity@gmail.com for app-specific licensing or support
+        Contact <a href="mailto:support@kefcore.com">support@kefcore.com</a> for app-specific licensing or support
         questions.
       </p>
     </LegalPage>

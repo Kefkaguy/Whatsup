@@ -1,13 +1,14 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import Brand from "@/components/Brand"
 
 export default function Footer() {
   return (
     <footer className="site-footer shell">
       <div className="footer-top">
-        <Link href="/" className="brand"><span className="brand-mark">k.</span>KefCore</Link>
+        <Brand />
         <p>Thoughtful apps. A simpler everyday.</p>
-        <a href="mailto:erosimcity@gmail.com" className="text-link">Say hello <ArrowUpRight size={17} /></a>
+        <a href="mailto:hello@kefcore.com" className="text-link">Say hello <ArrowUpRight size={17} /></a>
       </div>
       <div className="footer-bottom">
         <span>&copy; 2026 KefCore</span>

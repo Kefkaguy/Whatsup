@@ -15,7 +15,7 @@ export default function DataDeletionPage() {
       </p>
       <p>
         If you need help with a data deletion question, email
-        erosimcity@gmail.com with the app name and request details.
+        <a href="mailto:support@kefcore.com">support@kefcore.com</a> with the app name and request details.
       </p>
     </LegalPage>
   )

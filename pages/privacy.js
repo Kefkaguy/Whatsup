@@ -62,7 +62,7 @@ export default function PrivacyPage() {
               <span className="eyebrow">02 / Website app ideas</span><h2>A shared notebook, with a little care.</h2>
               <p>The website’s idea board is an online feature, separate from the local storage used by our apps. When you submit an idea, we save its title, description, category, optional nickname, submission date, and review status in MongoDB. Approved ideas and nicknames are visible to everyone on the board. Please leave out private or sensitive information.</p>
               <p>To reduce spam, we keep a keyed hash of your connection’s IP address in temporary rate-limit records. These expire within roughly 48 hours; raw IP addresses are not saved in idea submissions or rate-limit records. Our hosting and security providers may process connection information to deliver and protect the website.</p>
-              <p>Cloudflare Turnstile checks submissions for bots. The private review page uses GitHub sign-in for the owner. Submitted ideas remain stored until removed by the owner; to request removal, contact <a href="mailto:erosimcity@gmail.com">erosimcity@gmail.com</a> with the idea’s title and relevant details.</p>
+              <p>Cloudflare Turnstile checks submissions for bots. The private review page uses GitHub sign-in for the owner. Submitted ideas remain stored until removed by the owner; to request removal, contact <a href="mailto:support@kefcore.com">support@kefcore.com</a> with the idea’s title and relevant details.</p>
             </Reveal>
             <Reveal as="section" id="boxspot" className="privacy-section">
               <span className="eyebrow">03 / BoxSpot</span><h2>Your storage information stays yours.</h2>
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
             <Reveal as="section" id="contact" className="privacy-section privacy-contact">
               <span className="eyebrow">06 / Questions & contact</span><h2>Let’s make it clear.</h2>
               <p>If you have questions about this Privacy Policy or need support, email us. Include the app name and a short description of your question or issue.</p>
-              <a href="mailto:erosimcity@gmail.com?subject=Privacy%20question" className="text-link">erosimcity@gmail.com <ArrowUpRight size={17} /></a>
+              <a href="mailto:support@kefcore.com?subject=Privacy%20question" className="text-link">support@kefcore.com <ArrowUpRight size={17} /></a>
             </Reveal>
           </div>
         </div>

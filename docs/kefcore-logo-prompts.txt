@@ -1,0 +1,22 @@
+Generated using the built-in image tool.
+
+Icon concept prompt:
+Use case: logo-brand.
+Create one beautiful final company icon for "KefCore", an independent software studio that makes thoughtful, private apps for everyday life on iPhone and Windows. This is the parent company identity, not a camera app, shopping app, fitness app or pet app.
+Asset: square brand icon, flat clean graphic design, transparent outside the icon. A single deep olive rounded-square tile containing a distinctive warm ivory custom lowercase "k" monogram and a small ivory dot beside it, referencing the existing site's "k." identity but considerably more polished and ownable. Center the k-and-dot composition optically. Use a confident custom drawn letter with a slightly humanist editorial character, thick strokes, softly finished corners, highly balanced spacing. The dot is a small circular core, subtle and deliberate, not an extra decoration. Silhouette must read as k. instantly at 24 pixels.
+Colors: deep olive #45563b and warm ivory #fff9ec only. Solid opaque olive icon tile, genuine alpha transparency around its rounded corners. Large icon filling approximately 88% of square canvas with clean even padding. The tile's corners are softly rounded, not a circle. Beautiful minimalist Scandinavian/editorial software-studio branding, calm and warm, not generic futuristic cybertech.
+Deliver ONE isolated finished icon only, no wordmark outside the tile, no mockup, no layout board, no alternate versions, no other text, no perspective, no 3D, no lighting effects, no gradient, no bevel, no drop shadow, no textured background, no watermark. Razor crisp antialiased shapes, professional production asset.
+
+Final icon refinement prompt:
+Use case: precise-object-edit / logo-brand.
+Refine the supplied KefCore brand icon into a pristine flat production logo. Preserve the exact beautifully drawn lowercase k shape, ivory dot, rounded-square silhouette and centered layout of the reference.
+CORRECT THE BACKGROUND: the entire rounded-square tile must be one perfectly uniform fully opaque solid deep olive color #45563b. Remove all mottling, holes, transparent patches, gradient, lighting, grain and uneven color. Every point inside the tile, except the k and dot, must be flat identical olive. The k and dot must be perfectly uniform warm ivory #fff9ec.
+Outside the rounded-square tile use a uniform warm ivory #fff9ec background. No transparency for this version. Keep the same square canvas with roughly 6% margin. This is a 2-color flat graphic, like a vector brand logo exported to PNG. No shadows, no highlights, no 3D, no texture, no mockup, no extra words, no watermark.
+Deliver ONE immaculate company icon, sharply antialiased and instantly legible at small size.
+
+Horizontal logo prompt:
+Use case: logo-brand / compositing.
+Create a premium horizontal company logo lockup for KefCore using the supplied final icon as the exact symbol reference.
+Canvas landscape approximately 3:1, uniform warm ivory #fff9ec background. Only two components in one balanced centered horizontal arrangement: the referenced olive rounded-square k. icon at the left, and the exact word "KefCore" to its right. Preserve the icon's lowercase serif k and ivory dot faithfully. The olive tile must be solid, flat and uniform.
+Wordmark text verbatim: "KefCore". K-e-f-C-o-r-e, uppercase K and C, all other letters lowercase. Beautiful semibold humanist sans-serif wordmark, clean modern editorial character, deep olive #45563b, optically adjusted kerning. Align the wordmark to the optical center of the icon, with natural breathing room between them. Icon height slightly taller than wordmark capitals, subtle refined proportions suitable for a website header. Generous but not excessive blank space around complete logo.
+Flat graphic logo export with sharp edges. No slogan, no tagline, no other words, no extra graphics, no mockup, no photo, no 3D, no texture, no shadow, no gradient, no watermark, no alternate versions. Deliver ONE finished horizontal logo matching the supplied icon and a warm thoughtful independent software studio identity.
