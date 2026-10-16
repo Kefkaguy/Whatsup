@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install the locked dependencies from the repository root:
+
+```bash
+npm ci
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
@@ -39,3 +45,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # Whatsup
+
+## Linting
+
+After installing dependencies, run:
+
+```bash
+npm run lint
+```
+
+This uses the locally installed Next.js CLI and ESLint configuration; no global installation is required.

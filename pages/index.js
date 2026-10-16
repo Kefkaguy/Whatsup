@@ -62,7 +62,7 @@ export default function ResponsiveWhatsUpDashboard() {
           variants={fancyVariants}
           className="text-[clamp(4rem,15vw,512px)] font-bold tracking-tighter text-white"
         >
-          What's up
+          What&apos;s up
         </TextEffect>
 
         <motion.div
@@ -146,7 +146,7 @@ export default function ResponsiveWhatsUpDashboard() {
 
       <section className="py-24 flex flex-col items-center gap-8 text-center">
         <BlurFade inView>
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">Let's Work Together</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">Let&apos;s Work Together</h2>
         </BlurFade>
         <BlurFade inView delay={0.1}>
           <p className="max-w-2xl text-lg md:text-xl">
